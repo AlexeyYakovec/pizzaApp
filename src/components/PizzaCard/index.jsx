@@ -8,7 +8,7 @@ function PizzaCard({ title, price, image, sizes, types, index }) {
 
   return (
     <>
-      <div className='pizza-block' key={index}>
+      <div className='pizza-block'>
         <img className='pizza-block__image' src={image} alt='Pizza' />
         <h4 className='pizza-block__title'>{title}</h4>
         <div className='pizza-block__selector'>
@@ -37,7 +37,6 @@ function PizzaCard({ title, price, image, sizes, types, index }) {
           <div className='pizza-block__price'>от {price} ₽</div>
           <button className='button button--outline button--add'>
             <svg
-              //   onClick={onClickAdd}
               width='12'
               height='12'
               viewBox='0 0 12 12'

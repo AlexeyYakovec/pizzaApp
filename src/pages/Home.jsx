@@ -1,5 +1,7 @@
 import React from 'react';
 
+import axios from 'axios';
+
 import Categories from '../components/Categories';
 import PizzaCard from '../components/PizzaCard';
 import Sort from '../components/Sort';
@@ -10,14 +12,11 @@ function Home() {
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
-    fetch('https://628f50ce0e69410599da2f58.mockapi.io/items')
-      .then((res) => {
-        return res.json();
-      })
-      .then((arr) => {
-        setItems(arr);
-        setIsLoading(false);
-      });
+    axios.get('https://62a72469bedc4ca6d7c31135.mockapi.io/items').then((res) => {
+      setItems(res.data);
+      setIsLoading(false);
+      console.log(res.data);
+    });
   }, []);
 
   return (
