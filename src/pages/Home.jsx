@@ -7,8 +7,10 @@ import PizzaCard from '../components/PizzaCard';
 import Sort from '../components/Sort';
 import Skeleton from '../components/PizzaCard/Skeleton';
 import Pagination from '../components/Pagination';
+import { SearchContext } from '../App';
 
-function Home({ searchValue }) {
+function Home() {
+  const { searchValue } = React.useContext(SearchContext);
   const [items, setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [categoryId, setCatrgoryId] = React.useState(0);

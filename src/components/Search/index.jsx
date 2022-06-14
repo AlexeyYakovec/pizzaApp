@@ -1,11 +1,13 @@
 import React from 'react';
 
 import styles from './Search.module.scss';
+import { SearchContext } from '../../App';
 
 import { FcSearch } from 'react-icons/fc';
 import { IoMdClose } from 'react-icons/io';
 
-function Search({ searchValue, setSearchValue }) {
+function Search() {
+  const { searchValue, setSearchValue } = React.useContext(SearchContext);
   return (
     <div className={styles.searchWrapper}>
       <FcSearch className={styles.iconSearch} size={18} />
