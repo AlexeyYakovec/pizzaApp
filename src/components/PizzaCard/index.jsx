@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
-function PizzaCard({ title, price, image, sizes, types, index }) {
+function PizzaCard({ title, price, image, sizes, types }) {
   const [activeType, setActiveType] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
 
   const typeNames = ['тонкое', 'традиционное'];
 
   return (
-    <>
+    <div className='pizza-block-wrapper'>
       <div className='pizza-block'>
         <img className='pizza-block__image' src={image} alt='Pizza' />
         <h4 className='pizza-block__title'>{title}</h4>
@@ -52,7 +52,7 @@ function PizzaCard({ title, price, image, sizes, types, index }) {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
