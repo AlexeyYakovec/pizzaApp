@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 
-function PizzaCard({ title, price, image, sizes, types, index }) {
+function PizzaCard({ title, price, image, sizes, types }) {
   const [activeType, setActiveType] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
 
   const typeNames = ['тонкое', 'традиционное'];
 
   return (
-    <>
-      <div className='pizza-block' key={index}>
+    <div className='pizza-block-wrapper'>
+      <div className='pizza-block'>
         <img className='pizza-block__image' src={image} alt='Pizza' />
         <h4 className='pizza-block__title'>{title}</h4>
         <div className='pizza-block__selector'>
@@ -37,7 +37,6 @@ function PizzaCard({ title, price, image, sizes, types, index }) {
           <div className='pizza-block__price'>от {price} ₽</div>
           <button className='button button--outline button--add'>
             <svg
-              //   onClick={onClickAdd}
               width='12'
               height='12'
               viewBox='0 0 12 12'
@@ -53,7 +52,7 @@ function PizzaCard({ title, price, image, sizes, types, index }) {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
