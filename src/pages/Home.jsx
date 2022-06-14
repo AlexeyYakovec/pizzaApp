@@ -1,21 +1,19 @@
 import React from 'react';
-
 import axios from 'axios';
 
+//components
 import Categories from '../components/Categories';
 import PizzaCard from '../components/PizzaCard';
 import Sort from '../components/Sort';
 import Skeleton from '../components/PizzaCard/Skeleton';
 
-function Home() {
+function Home({ searchValue }) {
   const [items, setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [categoryId, setCatrgoryId] = React.useState(0);
   const [sortType, setSortType] = React.useState({ name: 'популярности', sortProperty: 'rating' });
 
-  console.log('catrgoryId :', categoryId);
-  console.log('sortType :', sortType);
-
+  console.log(items);
   React.useEffect(() => {
     setIsLoading(true);
 
@@ -34,7 +32,19 @@ function Home() {
     window.scrollTo(0, 0);
   }, [categoryId, sortType]);
 
-  console.log(items);
+  const pizzas = items
+    .filter((obj) => {
+      if (obj.title.toLowerCase().includes(searchValue.toLowerCase())) {
+        return true;
+      }
+
+      return false;
+    })
+    .map(({ title, price, imageUrl, sizes, types }) => (
+      <PizzaCard title={title} price={price} image={imageUrl} sizes={sizes} types={types} />
+    ));
+
+  const skeletons = [...new Array(10)].map((_, index) => <Skeleton key={index} />);
 
   return (
     <div className='container'>
@@ -43,13 +53,7 @@ function Home() {
         <Sort sortValue={sortType} onChangeSort={(id) => setSortType(id)} />
       </div>
       <h2 className='content__title'>Все пиццы</h2>
-      <div className='content__items'>
-        {isLoading
-          ? [...new Array(10)].map((_, index) => <Skeleton key={index} />)
-          : items.map(({ title, price, imageUrl, sizes, types }) => (
-              <PizzaCard title={title} price={price} image={imageUrl} sizes={sizes} types={types} />
-            ))}
-      </div>
+      <div className='content__items'>{isLoading ? skeletons : pizzas}</div>
     </div>
   );
 }
