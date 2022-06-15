@@ -10,8 +10,7 @@ const Skeleton = (props) => (
     viewBox='0 0 280 485'
     backgroundColor='#fff2f2'
     foregroundColor='#e0e0e0'
-    {...props}
-  >
+    {...props}>
     <circle cx='134' cy='136' r='125' />
     <rect x='0' y='279' rx='10' ry='10' width='280' height='23' />
     <rect x='0' y='326' rx='10' ry='10' width='280' height='88' />

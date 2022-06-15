@@ -14,6 +14,8 @@
       margin-right: 8px;
     }
 
+
+
     span {
       color: $orange;
       border-bottom: 1px dashed $orange;
@@ -30,7 +32,6 @@
     border-radius: 10px;
     overflow: hidden;
     padding: 10px 0;
-    width: 160px;
 
     ul {
       overflow: hidden;
@@ -50,4 +51,14 @@
       }
     }
   }
+}
+
+@media (max-width: 1270px) {
+           .sort {
+            &__label{
+                b{
+                    display: none;
+                }
+            }
+           } 
 }
