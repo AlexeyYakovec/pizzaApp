@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { SearchContext } from '../App';
 
 //components
 import Categories from '../components/Categories';
@@ -7,7 +8,6 @@ import PizzaCard from '../components/PizzaCard';
 import Sort from '../components/Sort';
 import Skeleton from '../components/PizzaCard/Skeleton';
 import Pagination from '../components/Pagination';
-import { SearchContext } from '../App';
 
 function Home() {
   const { searchValue } = React.useContext(SearchContext);
@@ -17,7 +17,6 @@ function Home() {
   const [currentPage, setCurrentPage] = React.useState(1);
   const [sortType, setSortType] = React.useState({ name: 'популярности', sortProperty: 'rating' });
 
-  console.log(items);
   React.useEffect(() => {
     setIsLoading(true);
 
